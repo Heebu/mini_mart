@@ -12,7 +12,6 @@ class HomePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      onViewModelReady: (viewModel) => viewModel.getAllItems(),
       viewModelBuilder: () => HomePageViewModel(),
       builder: (context, viewModel, child) {
         return Scaffold(

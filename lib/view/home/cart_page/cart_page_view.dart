@@ -10,7 +10,6 @@ class CartPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      onViewModelReady: (viewModel) => viewModel.getAllCart(context),
       viewModelBuilder: () => CartPageViewmodel(),
       builder: (context, viewModel, child) {
         return Scaffold(
@@ -96,7 +95,7 @@ class CartPageView extends StatelessWidget {
                                               IconButton.filledTonal(
                                                 onPressed: () async {
                                                   await viewModel.deleteCart(
-                                                    item.cartId,
+                                                    index,
                                                     context,
                                                   );
                                                 },

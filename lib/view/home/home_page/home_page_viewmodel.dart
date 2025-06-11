@@ -1,16 +1,10 @@
-import 'package:alpha_twelve/services/item_service.dart';
 import 'package:stacked/stacked.dart';
-
+import '../../../data/seed_data.dart';
 import '../../../model/item_model.dart';
 
 class HomePageViewModel extends BaseViewModel{
-  List<ItemModel> allItems = <ItemModel>[];
+  List<ItemModel> allItems = allSeedItems;
 
-  getAllItems() async{
-    final result = await ItemService().getAllItems();
-    allItems = result!;
-    notifyListeners();
-  }
 
   List<Map<String, String>> category = [
     {'name': 'Food', 'image': 'images/food.png'},
