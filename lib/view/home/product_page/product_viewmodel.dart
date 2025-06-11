@@ -4,7 +4,7 @@ import 'package:mini_mart/data/all_cart.dart';
 import 'package:mini_mart/model/cart_model.dart';
 import 'package:stacked/stacked.dart';
 import '../../../model/item_model.dart';
-import '../../widgets/snack_bar.dart';
+import '../../../utils/toast_manager.dart';
 
 class ProductViewmodel extends BaseViewModel {
   int count = 1;
@@ -47,10 +47,23 @@ class ProductViewmodel extends BaseViewModel {
     String result = 'an unexpected error occurred';
     try {
      allSeededCart.add(CartModel(itemName: itemModel.itemName, itemId: itemModel.itemId, cartId: 'cartId', userId: '', itemImage: itemModel.images[0], count: count, price: itemModel.price, date: DateTime.now()));
-      showSnackBar(context, 'Item Added');
-      Navigator.pop(context);
+     ToastManager().showToast(
+       context: context,
+       message: 'Item added to cart',
+       icon: Icons.check_circle,
+       backgroundColor: Colors.green,
+       position: ToastPosition.top,
+     );
+
+     Navigator.pop(context);
     } catch (e) {
-      showSnackBar(context, e.toString());
+      ToastManager().showToast(
+        context: context,
+        message: e.toString(),
+        icon: Icons.check_circle,
+        backgroundColor: Colors.red,
+        position: ToastPosition.top,
+      );
     }
 
     isLoading = false;

@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:mini_mart/data/seed_order.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../../data/all_cart.dart';
 import '../../../model/cart_model.dart';
 import '../../../model/order_model.dart';
-import '../../widgets/snack_bar.dart';
+import '../../../utils/toast_manager.dart';
 
 class CartPageViewmodel extends BaseViewModel{
   List<CartModel> allCart = allSeededCart;
@@ -37,10 +37,22 @@ allCart.removeAt(index);
     allSeededOrder.add(
          OrderModel(itemName: item.itemName, itemId: item.itemId, cartId: item.cartId, userId: item.userId, state: 'item.state', status: 'pending', address: 'address', count: item.count, price: item.price, date: DateTime.now()));
        await deleteCart(x, context);
-       showSnackBar(context, 'Payment successful');
+       ToastManager().showToast(
+         context: context,
+         message: 'Item added to Order',
+         icon: Icons.check_circle,
+         backgroundColor: Colors.green,
+         position: ToastPosition.top,
+       );
      }
    }catch(e){
-     showSnackBar(context, e.toString());
+     ToastManager().showToast(
+       context: context,
+       message: e.toString(),
+       icon: Icons.check_circle,
+       backgroundColor: Colors.red,
+       position: ToastPosition.top,
+     );
    }
     isLoading = false;
     notifyListeners();

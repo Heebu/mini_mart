@@ -1,16 +1,22 @@
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../model/favorite_model.dart';
-import '../../widgets/snack_bar.dart';
+import '../../../utils/toast_manager.dart';
 
 class FavoritePageViewmodel extends BaseViewModel{
   List<FavoriteModel> allFavorite = <FavoriteModel>[];
 
 
   deleteFav(String itemId, context) async{
-
     ///
-    showSnackBar(context, 'result');
+    ToastManager().showToast(
+      context: context,
+      message: 'result',
+      icon: Icons.check_circle,
+      backgroundColor: Colors.red,
+      position: ToastPosition.top,
+    );
   }
 
 
