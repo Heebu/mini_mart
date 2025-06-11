@@ -1,8 +1,9 @@
-import 'package:alpha_twelve/view/home/profile_page/profile/profile_view.dart';
-import 'package:alpha_twelve/view/home/profile_page/profile_page_viewmodel.dart';
-import 'package:alpha_twelve/view/home/profile_page/settings/setting_view.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mini_mart/view/home/profile_page/profile/profile_view.dart';
+import 'package:mini_mart/view/home/profile_page/profile_page_viewmodel.dart';
+import 'package:mini_mart/view/home/profile_page/settings/setting_view.dart';
 import 'package:stacked/stacked.dart';
 
 import 'order/order_view.dart';
@@ -13,7 +14,6 @@ class ProfilePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      onViewModelReady: (viewModel) => viewModel.getUser(),
       viewModelBuilder: ()=> ProfilePageViewmodel(),
         builder: (context, viewModel, child) {
           return Scaffold(

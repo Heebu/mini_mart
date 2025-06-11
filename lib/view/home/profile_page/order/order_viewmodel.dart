@@ -1,13 +1,9 @@
-import 'package:alpha_twelve/model/order_model.dart';
-import 'package:alpha_twelve/services/order_service.dart';
+
+import 'package:mini_mart/data/seed_order.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../../model/order_model.dart';
+
 class OrderViewmodel extends BaseViewModel{
-  List<OrderModel> allOrders = <OrderModel>[];
-
-  getAllOrders() async{
-    allOrders = (await OrderService().getAllOrder())!;
-    notifyListeners();
-  }
-
+  List<OrderModel> allOrders = allSeededOrder;
 }

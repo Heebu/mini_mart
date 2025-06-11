@@ -1,6 +1,6 @@
-import 'package:alpha_twelve/view/home/profile_page/profile/profile_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mini_mart/view/home/profile_page/profile/profile_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../widgets/button.dart';

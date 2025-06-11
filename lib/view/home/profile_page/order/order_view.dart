@@ -10,7 +10,6 @@ class OrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      onViewModelReady: (viewModel) => viewModel.getAllOrders(),
       viewModelBuilder: () => OrderViewmodel(),
         builder: (context, viewModel, child) {
           return Scaffold(

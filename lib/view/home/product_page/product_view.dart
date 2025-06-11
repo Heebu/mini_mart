@@ -1,8 +1,7 @@
-import 'package:alpha_twelve/view/home/product_page/product_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mini_mart/view/home/product_page/product_viewmodel.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../../model/item_model.dart';
 import '../../widgets/number_format.dart';
 
@@ -13,7 +12,6 @@ class ProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      onViewModelReady: (viewModel) => viewModel.initClass(itemModel),
       viewModelBuilder: () => ProductViewmodel(),
       builder: (context, viewModel, child) {
         return Scaffold(

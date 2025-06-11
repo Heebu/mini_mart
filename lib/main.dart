@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
               ScreenUtil.init(context);
               return MaterialApp(
 
-                title: 'Flutter Shops',
+                title: 'MiniMart – eCommerce',
                 themeMode: mode,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,

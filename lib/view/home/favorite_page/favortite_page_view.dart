@@ -1,8 +1,8 @@
-import 'package:alpha_twelve/model/favorite_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../model/favorite_model.dart';
 import 'favorite_page_viewmodel.dart';
 
 class FavoritePageView extends StatelessWidget {
@@ -11,7 +11,6 @@ class FavoritePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      onViewModelReady: (viewModel) => viewModel.getAllFavorite(context),
       viewModelBuilder: () => FavoritePageViewmodel(),
         builder: (context, viewModel, child) {
           return Scaffold(

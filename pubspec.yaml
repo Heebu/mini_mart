@@ -37,6 +37,7 @@ dependencies:
   stacked:
   stacked_services: ^1.3.0
   flutter_screenutil: ^5.9.0
+  intl:
 
 
 dev_dependencies:

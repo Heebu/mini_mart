@@ -1,11 +1,10 @@
-import 'package:alpha_twelve/model/favorite_model.dart';
-import 'package:alpha_twelve/services/cart_service.dart';
-import 'package:alpha_twelve/view/widgets/snack_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
 
+import 'package:flutter/material.dart';
+import 'package:mini_mart/data/all_cart.dart';
+import 'package:mini_mart/model/cart_model.dart';
+import 'package:stacked/stacked.dart';
 import '../../../model/item_model.dart';
-import '../../../services/favorite_service.dart';
+import '../../widgets/snack_bar.dart';
 
 class ProductViewmodel extends BaseViewModel {
   int count = 1;
@@ -31,11 +30,11 @@ class ProductViewmodel extends BaseViewModel {
 
   favoriteItem(ItemModel itemModel) async {
     if (isFavorite) {
-      FavoriteService().favoriteItem(itemModel);
+      // FavoriteService().favoriteItem(itemModel);
       isFavorite = true;
       notifyListeners();
     } else {
-      FavoriteService().unfavoriteItem(itemModel);
+      // FavoriteService().unfavoriteItem(itemModel);
       isFavorite = false;
       notifyListeners();
     }
@@ -47,13 +46,7 @@ class ProductViewmodel extends BaseViewModel {
     notifyListeners();
     String result = 'an unexpected error occurred';
     try {
-      await CartService().addToCart(
-        itemModel.itemName,
-        count,
-        itemModel.price * count,
-        itemModel.itemId,
-       itemModel.coverImage?? itemModel.images[0],
-      );
+     allSeededCart.add(CartModel(itemName: itemModel.itemName, itemId: itemModel.itemId, cartId: 'cartId', userId: '', itemImage: itemModel.images[0], count: count, price: itemModel.price, date: DateTime.now()));
       showSnackBar(context, 'Item Added');
       Navigator.pop(context);
     } catch (e) {
@@ -65,16 +58,4 @@ class ProductViewmodel extends BaseViewModel {
     return result;
   }
 
-  getFavorite(ItemModel itemModel) async {
-    final incomingData =
-        await FavoriteService().favoritePath
-            .where('itemId', isEqualTo: itemModel.itemId)
-            .get();
-    incomingData.docs.isEmpty ? isFavorite == false : isFavorite == true;
-    notifyListeners();
   }
-
-  initClass(itemModel) async {
-    await getFavorite(itemModel);
-  }
-}

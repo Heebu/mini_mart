@@ -1,5 +1,5 @@
-import 'package:alpha_twelve/view/home/profile_page/settings/setting_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_mart/view/home/profile_page/settings/setting_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../main.dart';
 

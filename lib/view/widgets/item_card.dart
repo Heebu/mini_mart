@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../model/item_model.dart';
+import '../home/product_page/product_view.dart';
 import 'number_format.dart';
 
 class ItemCard extends StatelessWidget {
