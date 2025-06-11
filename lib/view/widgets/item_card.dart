@@ -38,8 +38,9 @@ class ItemCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(itemModel.itemName, style: Theme.of(context).textTheme.titleLarge),
-                  Text('₦${formatNumber(itemModel.price)}'),
+                  Text(itemModel.itemName, style: Theme.of(context).textTheme.bodyLarge),
+                  Text(itemModel.description, style: Theme.of(context).textTheme.bodySmall),
+                  Text('\$${formatNumber(itemModel.price)}.00', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800),),
                 ],
               ),
             ),

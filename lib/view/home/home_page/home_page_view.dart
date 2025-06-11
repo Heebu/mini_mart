@@ -33,59 +33,63 @@ class HomePageView extends StatelessWidget {
 
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Categories',
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                SizedBox(
-                  height: 250,
-                  child: GridView.builder(
-                    itemCount: viewModel.category.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 5.w,
-                      mainAxisSpacing: 5.h,
-                      mainAxisExtent: 100,
-                    ),
-                    itemBuilder: (context, index) {
-                      final cat = viewModel.category[index];
-                      return GestureDetector(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryView(name: cat['name']!,),));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.r),
-                            image: DecorationImage(image: AssetImage(cat['image']!), fit: BoxFit.cover)
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Categories',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  SizedBox(
+                    height: 250,
+                    child: GridView.builder(
+                      itemCount: viewModel.category.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 5.w,
+                        mainAxisSpacing: 5.h,
+                        mainAxisExtent: 100,
+                      ),
+                      itemBuilder: (context, index) {
+                        final cat = viewModel.category[index];
+                        return GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryView(name: cat['name']!,),));
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.r),
+                              image: DecorationImage(image: AssetImage(cat['image']!), fit: BoxFit.cover)
+                            ),
+                            child: Center(child: Text(cat['name']!, style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800, backgroundColor: Colors.white60),)),
                           ),
-                          child: Center(child: Text(cat['name']!, style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800, backgroundColor: Colors.white60),)),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-
-                Text('For you', style: Theme.of(context).textTheme.titleMedium),
-
-                Expanded(
-                  child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 5.w,
-                      mainAxisSpacing: 5.h,
-                      mainAxisExtent: 300,
+                        );
+                      },
                     ),
-                    itemCount: viewModel.allItems.length,
-                    itemBuilder: (context, index) {
-                      return ItemCard(itemModel: viewModel.allItems[index],);
-                    },
                   ),
-                ),
-              ],
+              
+                  Text('For you', style: Theme.of(context).textTheme.titleMedium),
+              
+                  SizedBox(
+                    height: 500.h,
+                    child: GridView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 5.w,
+                        mainAxisSpacing: 5.h,
+                        mainAxisExtent: 300,
+                      ),
+                      itemCount: viewModel.allItems.length,
+                      itemBuilder: (context, index) {
+                        return ItemCard(itemModel: viewModel.allItems[index],);
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         );
